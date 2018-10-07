@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { AppRegistry, View } from "react-native";
 import { connect } from "react-redux";
 
-import { actionCreators } from "./todoListRedux";
-import List from "./List";
-import Input from "./Input";
-import Title from "./Title";
+import { actionCreators } from "./app/reducers/todoListRedux";
+import List from "./app/components/List";
+import Input from "./app/components/Input";
+import Title from "./app/components/Title";
 
 const mapStateToProps = state => ({
   todos: state.todos
