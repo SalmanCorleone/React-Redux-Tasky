@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
 
-export default class List extends Component {
+export default class Done extends Component {
 
   renderItem = (text, i) => {
-    const {onPressItem} = this.props
 
     return (
       <TouchableOpacity
-        style={styles.item}
-        onPress={() => onPressItem(i)}
+        style={styles.item}        
       >
         <Text>{text}</Text>
       </TouchableOpacity>
@@ -29,7 +27,7 @@ export default class List extends Component {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: 'lightblue',
     marginBottom: 5,
     padding: 15,
   },

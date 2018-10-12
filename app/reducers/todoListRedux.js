@@ -9,14 +9,16 @@ export const actionCreators = {
   add: (item) => {
     return {type: types.ADD, payload: item}
   },
-  remove: (index) => {
-    return {type: types.REMOVE, payload: index}
+  remove: (index, item) => {
+    return {type: types.REMOVE, payload: {index,item}}
   }
 }
 
 // Initial state of the store
 const initialState = {
   todos: ['Click to remove', 'Learn React Native', 'Write Code', 'Ship App'],
+  done : ['ayy man'],
+  
 }
 
 // Function to handle actions and update the state of the store.
@@ -27,7 +29,7 @@ const initialState = {
 //   call reducer() with no state on startup, and we are expected to
 //   return the initial state of the app in this case.
 export const reducer = (state = initialState, action) => {
-  const {todos} = state
+  const {todos, done} = state
   const {type, payload} = action
 
   switch (type) {
@@ -35,12 +37,14 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         todos: [payload, ...todos],
+      
       }
     }
     case types.REMOVE: {
       return {
         ...state,
-        todos: todos.filter((todo, i) => i !== payload),
+        todos: todos.filter((todo, i) => i !== payload.index),
+        done: [payload.item,...done],
       }
     }
   }

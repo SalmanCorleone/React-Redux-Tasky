@@ -6,9 +6,11 @@ import { actionCreators } from "./app/reducers/todoListRedux";
 import List from "./app/components/List";
 import Input from "./app/components/Input";
 import Title from "./app/components/Title";
+import Done from "./app/components/Done";
 
 const mapStateToProps = state => ({
-  todos: state.todos
+  todos: state.todos,
+  done : state.done
 });
 
 class App extends Component {
@@ -17,13 +19,13 @@ class App extends Component {
     dispatch(actionCreators.add(text));
   };
 
-  onRemoveTodo = index => {
+  onRemoveTodo = (index, todo) => {
     const { dispatch } = this.props;
-    dispatch(actionCreators.remove(index));
+    dispatch(actionCreators.remove(index,todo));
   };
 
   render() {
-    const { todos } = this.props;
+    const { todos, done } = this.props;
 
     return (
       <View>
@@ -33,6 +35,8 @@ class App extends Component {
           onSubmitEditing={this.onAddTodo}
         />
         <List list={todos} onPressItem={this.onRemoveTodo} />
+        <Done list={done} />
+        
       </View>
     );
   }
