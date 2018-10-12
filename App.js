@@ -35,7 +35,7 @@ class App extends Component {
           onSubmitEditing={this.onAddTodo}
         />
         <List list={todos} onPressItem={this.onRemoveTodo} />
-        <Done list={done} />
+        {/* <Done list={done} /> */}
         
       </View>
     );

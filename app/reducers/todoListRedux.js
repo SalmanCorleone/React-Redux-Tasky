@@ -44,7 +44,7 @@ export const reducer = (state = initialState, action) => {
     case types.REMOVE: {
       return {
         ...state,
-        todos: todos.filter((todo) => todo !== payload.index),
+        todos: todos.filter((todo,i) => i !== payload.index),
         done: [payload.item, ...done],
       }
     }
