@@ -9,7 +9,7 @@ export default class List extends Component {
     return (
       <TouchableOpacity
         style={styles.item}
-        onPress={() => onPressItem(i)}
+        onPress={() => onPressItem(i, text)}
       >
         <Text>{text}</Text>
       </TouchableOpacity>

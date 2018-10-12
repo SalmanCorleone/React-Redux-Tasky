@@ -19,9 +19,9 @@ class App extends Component {
     dispatch(actionCreators.add(text));
   };
 
-  onRemoveTodo = (index, todo) => {
+  onRemoveTodo = (index, item) => {
     const { dispatch } = this.props;
-    dispatch(actionCreators.remove(index,todo));
+    dispatch(actionCreators.remove(index, item));
   };
 
   render() {

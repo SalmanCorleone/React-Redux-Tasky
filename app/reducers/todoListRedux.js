@@ -17,7 +17,7 @@ export const actionCreators = {
 // Initial state of the store
 const initialState = {
   todos: ['Click to remove', 'Learn React Native', 'Write Code', 'Ship App'],
-  done : ['ayy man'],
+  done : [],
   
 }
 
@@ -37,14 +37,15 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         todos: [payload, ...todos],
+        done: [payload, ...done],
       
       }
     }
     case types.REMOVE: {
       return {
         ...state,
-        todos: todos.filter((todo, i) => i !== payload.index),
-        done: [payload.item,...done],
+        todos: todos.filter((todo) => todo !== payload.index),
+        done: [payload.item, ...done],
       }
     }
   }
