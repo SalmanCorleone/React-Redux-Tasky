@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-import { AppRegistry, View } from "react-native";
+import { View } from "react-native";
 import { connect } from "react-redux";
 
 import { actionCreators } from "./app/reducers/todoListRedux";
-import List from "./app/components/List";
-import Input from "./app/components/Input";
-import Title from "./app/components/Title";
-import Done from "./app/components/Done";
+import List from "../components/List";
+import Input from "../components/Input";
+import Title from "../components/Title";
 
 const mapStateToProps = state => ({
   todos: state.todos,
   done : state.done
 });
 
-class App extends Component {
+class todoList extends Component {
   onAddTodo = text => {
     const { dispatch } = this.props;
     dispatch(actionCreators.add(text));
@@ -34,12 +33,11 @@ class App extends Component {
           placeholder={"Type a todo, then hit enter!"}
           onSubmitEditing={this.onAddTodo}
         />
-        <List list={todos} onPressItem={this.onRemoveTodo} />
-        {/* <Done list={done} /> */}
+        <List list={todos} onPressItem={this.onRemoveTodo} />        
         
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(todoList);

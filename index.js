@@ -7,13 +7,13 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import storage from 'redux-persist/lib/storage';
 
-import App from "./App";
+import AppWithNavigation from "./app/navigation/router";
 import { reducer } from "./app/reducers/todoListRedux";
 
 const persistConfig = {
   key: "root",
   storage: storage,
-  stateReconciler: autoMergeLevel2 // see "Merge Process" section for details.
+  stateReconciler: autoMergeLevel2
 };
 
 const pReducer = persistReducer(persistConfig, reducer);
@@ -26,7 +26,7 @@ const persistor = persistStore(store);
 const AppWithStore = () => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <App />
+      <AppWithNavigation />
     </PersistGate>
   </Provider>
 );
