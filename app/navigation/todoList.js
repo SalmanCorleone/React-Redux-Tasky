@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import { connect } from "react-redux";
 
-import { actionCreators } from "./app/reducers/todoListRedux";
+import { actionCreators } from "../reducers/todoListRedux";
 import List from "../components/List";
 import Input from "../components/Input";
 import Title from "../components/Title";
@@ -24,7 +24,7 @@ class todoList extends Component {
   };
 
   render() {
-    const { todos, done } = this.props;
+    const { todos } = this.props;
 
     return (
       <View>

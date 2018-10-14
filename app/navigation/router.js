@@ -1,25 +1,25 @@
 import React from 'react';
-import { TabNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import todoList from './todoList';
 import doneList from './doneList';
 
 
-export const AppWithNavigation = TabNavigator({
+export const AppWithNavigation = createBottomTabNavigator({
     todoList: {
       screen: todoList,
       navigationOptions: {
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => <Icon name="list" size={35} color={tintColor} />
+        tabBarLabel: 'Tasks',
+        tabBarIcon: ({ tintColor }) => <Icon name="laptop" type='font-awesome' size={35} color={tintColor} />
   }
     },
     doneList: {
       screen: doneList,
       navigationOptions: 
         {
-        tabBarLabel: 'Me',
-        tabBarIcon: ({ tintColor }) => <Icon name="account-circle" size={35} color={tintColor} />
+        tabBarLabel: 'Completed',
+        tabBarIcon: ({ tintColor }) => <Icon name="search" type ="font-awesome" size={35} color={tintColor} />
         },
     },
   });

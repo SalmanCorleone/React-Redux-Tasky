@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, StatusBar} from 'react-native'
-import {Header} from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {View, StyleSheet, StatusBar} from 'react-native'
+import {Header, Icon} from 'react-native-elements'
 
 
 
@@ -21,9 +20,9 @@ export default class Title extends Component {
 
         <Header
           outerContainerStyles={{ backgroundColor: '#00b3ce' }}
-          leftComponent={<Icon name='home' color='#fff'/>}
+          leftComponent={<Icon name='home' type='font-awesome' color="#fff"/>}
           centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'facebook', color: '#fff' }}
+          rightComponent={{ icon: 'alarm', color: '#fff' }}
           >
 
           </Header>

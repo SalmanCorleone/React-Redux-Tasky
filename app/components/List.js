@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native'
 
 export default class List extends Component {
 
@@ -20,9 +20,9 @@ export default class List extends Component {
     const {list} = this.props
 
     return (
-      <View>
-        {list.map(this.renderItem)}
-      </View>
+      <ScrollView>        
+        {list.map(this.renderItem)}        
+      </ScrollView>
     )
   }
 }
