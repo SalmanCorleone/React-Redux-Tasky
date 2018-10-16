@@ -1,6 +1,6 @@
 import React from "react";
-import { AppRegistry, View, AsyncStorage } from "react-native";
-import { createStore, applyMiddleware } from "redux";
+import { AppRegistry} from "react-native";
+import { createStore  } from "redux";
 import { Provider } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";

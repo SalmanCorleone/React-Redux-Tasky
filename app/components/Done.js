@@ -27,7 +27,7 @@ export default class Done extends Component {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'whitesmoke',
     marginBottom: 5,
     padding: 15,
   },
