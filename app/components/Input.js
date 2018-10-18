@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import {FormLabel, FormInput, Button} from 'react-native-elements'
 
 export default class Input extends Component {
 
@@ -24,20 +25,50 @@ export default class Input extends Component {
     const {text} = this.state
 
     return (
-      <TextInput
-        style={styles.input}
-        value={text}
-        placeholder={placeholder}
-        onChangeText={this.onChangeText}
-        onSubmitEditing={this.onSubmitEditing}
-      />
+      <View style={styles.main}>
+        <View style={styles.rightbox}>        
+          <FormInput        
+            value={text}
+            placeholder={placeholder}
+            onChangeText={this.onChangeText}
+            onSubmitEditing={this.onSubmitEditing}
+          />
+        </View>
+        <View style={styles.leftbox}>
+        <Button         
+            buttonStyle={styles.button}
+            backgroundColor="skyblue"
+            title="+"
+            fontSize={20}
+            onPress={this.onSubmitEditing}
+            
+          />
+        </View>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  input: {
-    padding: 15,
-    height: 50,
+  main:
+  {
+    marginTop: 10,
+    marginBottom:10,
+    padding: 5,
+    flexDirection: "row",
   },
+  leftbox:
+  {
+    flex: 2,
+
+  },
+  rightbox: 
+  {
+    flex: 8,
+    
+    justifyContent: 'center',
+  },
+  button:{
+       
+  }
 })

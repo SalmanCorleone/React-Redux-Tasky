@@ -2,6 +2,7 @@
 export const types = {
   ADD: 'ADD',
   REMOVE: 'REMOVE',
+  X_DONE: 'X_DONE'
 }
 
 // Helper functions to dispatch actions, optionally with payloads
@@ -11,12 +12,15 @@ export const actionCreators = {
   },
   remove: (index, item) => {
     return {type: types.REMOVE, payload: {index,item}}
+  },
+  x_done: (index)=>{
+    return {type: types.X_DONE, payload:index}
   }
 }
 
 // Initial state of the store
 const initialState = {
-  todos: ['Click to remove', 'Learn React Native', 'Write Code', 'Ship App'],
+  todos: ['Some Random', 'Task To', 'Get You', 'Started!'],
   done : [],
   
 }
@@ -37,7 +41,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         todos: [payload, ...todos],
-        done: [payload, ...done],
+        
       
       }
     }
@@ -46,6 +50,14 @@ export const reducer = (state = initialState, action) => {
         ...state,
         todos: todos.filter((todo,i) => i !== payload.index),
         done: [payload.item, ...done],
+      }
+    }
+
+    case types.X_DONE:
+    {
+      return {
+        ...state,
+        done: done.filter((done,i) => i!=payload),
       }
     }
   }

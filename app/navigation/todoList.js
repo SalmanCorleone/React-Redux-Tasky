@@ -30,7 +30,7 @@ class todoList extends Component {
       <View>
         <Title>To-Do List</Title>
         <Input
-          placeholder={"Type a todo, then hit enter!"}
+          placeholder={"Type a task, then hit enter!"}
           onSubmitEditing={this.onAddTodo}
         />
         <List list={todos} onPressItem={this.onRemoveTodo} />        

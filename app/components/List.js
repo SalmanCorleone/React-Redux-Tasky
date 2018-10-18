@@ -20,7 +20,7 @@ export default class List extends Component {
     const {list} = this.props
 
     return (
-      <ScrollView>        
+      <ScrollView style={{marginBottom:150}}>        
         {list.map(this.renderItem)}        
       </ScrollView>
     )

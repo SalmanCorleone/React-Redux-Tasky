@@ -11,7 +11,7 @@ export const AppWithNavigation = createBottomTabNavigator({
       screen: todoList,
       navigationOptions: {
         tabBarLabel: 'Tasks',
-        tabBarIcon: ({ tintColor }) => <Icon name="list" type="feather" size={35} color={tintColor} />
+        tabBarIcon: ({ tintColor }) => <Icon name="list" type="feather" size={25} color={tintColor} />
   }
     },
     doneList: {
@@ -19,7 +19,7 @@ export const AppWithNavigation = createBottomTabNavigator({
       navigationOptions: 
         {
         tabBarLabel: 'Completed',
-        tabBarIcon: ({ tintColor }) => <Icon name="done" size={35} color={tintColor} />
+        tabBarIcon: ({ tintColor }) => <Icon name="done" size={25} color={tintColor} />
         },
     },
   });
