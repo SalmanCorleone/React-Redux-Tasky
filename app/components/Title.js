@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
-import {View, StyleSheet, StatusBar} from 'react-native'
+import {View, StyleSheet, StatusBar, Picker} from 'react-native'
 import {Header} from 'react-native-elements'
 
 
 
 export default class Title extends Component {
+  state={
+    language: '',
+  }
 
   render() {
     const {children} = this.props
@@ -12,17 +15,17 @@ export default class Title extends Component {
     return (
       <View>
         <StatusBar
-           backgroundColor="#00b3ce"
+           backgroundColor="#2979FF"
            barStyle="light-content"
 
 
         />
 
-        <Header
-          outerContainerStyles={{ backgroundColor: '#00b3ce' }}
+        <Header 
+          outerContainerStyles={{ backgroundColor: '#2979FF', borderBottomWidth:0 }}
           leftComponent={{icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'Taskify', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'arrow-drop-down', color: '#fff' }}
+          centerComponent={{ text: 'Taskify', style: { color: '#fff' } }}       
+
           >
 
           </Header>
@@ -32,13 +35,3 @@ export default class Title extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: 'skyblue',
-    padding: 15
-  },
-  title: {
-    textAlign: 'center',
-    color: 'white'
-  }
-})

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View , StyleSheet} from "react-native";
 import { connect } from "react-redux";
 
 import { actionCreators } from "../reducers/todoListRedux";
@@ -9,7 +9,8 @@ import Title from "../components/Title";
 
 const mapStateToProps = state => ({
   todos: state.todos,
-  done : state.done
+  done : state.done,
+  
 });
 
 class todoList extends Component {
@@ -27,17 +28,26 @@ class todoList extends Component {
     const { todos } = this.props;
 
     return (
-      <View>
-        <Title>To-Do List</Title>
+      <View style={styles.back}>
+        <Title/>
         <Input
-          placeholder={"Type a task, then hit enter!"}
+          placeholder={"Enter Quick Task"}
           onSubmitEditing={this.onAddTodo}
         />
-        <List list={todos} onPressItem={this.onRemoveTodo} />        
+        {/* <List list={todos} onPressItem={this.onRemoveTodo} />         */}
+        <List list={todos} onPressItem={()=>this.props.navigation.push('Details')} />        
         
       </View>
     );
   }
 }
+
+const styles= StyleSheet.create({
+  back: {
+    backgroundColor: '#2c3e50',
+    
+  }
+});
+
 
 export default connect(mapStateToProps)(todoList);

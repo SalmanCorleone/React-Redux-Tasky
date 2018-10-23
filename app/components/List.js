@@ -11,7 +11,7 @@ export default class List extends Component {
         style={styles.item}
         onPress={() => onPressItem(i, text)}
       >
-        <Text>{text}</Text>
+        <Text style={{color: 'whitesmoke'}}>{text}</Text>
       </TouchableOpacity>
     )
   }
@@ -29,8 +29,9 @@ export default class List extends Component {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: '#34495e',
     marginBottom: 5,
     padding: 15,
+    
   },
 })

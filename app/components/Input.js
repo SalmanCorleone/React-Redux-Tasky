@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
-import {FormLabel, FormInput, Button} from 'react-native-elements'
+import {FormInput, Button} from 'react-native-elements'
 
 export default class Input extends Component {
 
@@ -26,20 +26,22 @@ export default class Input extends Component {
 
     return (
       <View style={styles.main}>
-        <View style={styles.rightbox}>        
-          <FormInput        
-            value={text}
-            placeholder={placeholder}
-            onChangeText={this.onChangeText}
-            onSubmitEditing={this.onSubmitEditing}
+        <View style={styles.leftbox}>        
+          <FormInput         
+          value={text}
+          placeholder={placeholder}
+          placeholderTextColor='white'
+          onChangeText={this.onChangeText}
+          inputStyle={{color:'white'}}
+          onSubmitEditing={this.onSubmitEditing}
           />
         </View>
-        <View style={styles.leftbox}>
+        <View style={styles.rightbox}>
         <Button         
             buttonStyle={styles.button}
-            backgroundColor="skyblue"
-            title="+"
-            fontSize={20}
+            backgroundColor="#2979FF"
+            title="ADD"
+            fontSize={10}
             onPress={this.onSubmitEditing}
             
           />
@@ -59,12 +61,12 @@ const styles = StyleSheet.create({
   },
   leftbox:
   {
-    flex: 2,
+    flex: 7,
 
   },
   rightbox: 
   {
-    flex: 8,
+    flex: 3,
     
     justifyContent: 'center',
   },

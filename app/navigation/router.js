@@ -1,20 +1,36 @@
 import React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
 import todoList from './todoList';
+import details from './details';
 import doneList from './doneList';
 
 
+const todoStack = createStackNavigator(
+  {
+  Home: todoList,
+  Details: details,
+  },
+  {
+  headerMode: 'none',
+  mode: 'modal',
+}
+);
+
+
 export const AppWithNavigation = createBottomTabNavigator({
-    todoList: {
-      screen: todoList,
-      navigationOptions: {
+    todoList: 
+    {
+      screen: todoStack,      
+      navigationOptions: 
+      {
         tabBarLabel: 'Tasks',
         tabBarIcon: ({ tintColor }) => <Icon name="list" type="feather" size={25} color={tintColor} />
-  }
+      }
     },
-    doneList: {
+    doneList: 
+    {
       screen: doneList,
       navigationOptions: 
         {
@@ -22,4 +38,18 @@ export const AppWithNavigation = createBottomTabNavigator({
         tabBarIcon: ({ tintColor }) => <Icon name="done" size={25} color={tintColor} />
         },
     },
-  });
+  
+
+
+  },
+  {
+
+    tabBarOptions: {
+      activeTintColor: '#fff',
+      inactiveTintColor: '#CFD8DC',      
+      style: {
+        backgroundColor: '#2979FF',
+      },
+    }
+  }
+  );

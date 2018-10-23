@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View, ScrollView } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
+import {Text} from 'react-native-elements'
 import { connect } from "react-redux";
 import Done from "../components/Done";
 import Title from "../components/Title";
@@ -20,7 +21,11 @@ class doneList extends Component {
 
     return (
       <View>
-        <Title>Completed</Title>   
+        <Title/>
+        <View style={styles.history}>
+          <Text h4>Task History</Text>
+        </View>
+        
         <ScrollView style={{marginBottom: 80}}>
           <Done list={done} onPressItem={this.onXdone} />
         </ScrollView>     
@@ -30,5 +35,15 @@ class doneList extends Component {
     );
   }
 }
+
+const styles=StyleSheet.create({
+  history:{    
+    backgroundColor: 'whitesmoke',
+    justifyContent: 'center',
+    alignItems:'center',
+    padding: 20,
+  }
+  
+})
 
 export default connect(mapStateToProps)(doneList);
