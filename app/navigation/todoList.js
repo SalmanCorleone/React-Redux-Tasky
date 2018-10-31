@@ -35,7 +35,11 @@ class todoList extends Component {
           onSubmitEditing={this.onAddTodo}
         />
         {/* <List list={todos} onPressItem={this.onRemoveTodo} />         */}
-        <List list={todos} onPressItem={()=>this.props.navigation.push('Details')} />        
+        <List list={todos} onPressItem={(i,text)=>this.props.navigation.push('Details',
+        {
+          itemId: i,
+          otherParam: text,
+        })} />        
         
       </View>
     );

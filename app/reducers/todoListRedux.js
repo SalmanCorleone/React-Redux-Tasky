@@ -22,6 +22,13 @@ export const actionCreators = {
 const initialState = {
   todos: ['Some Random', 'Task To', 'Get You', 'Started!'],
   done : [],
+  tasks: [
+    {
+    task:"first Task",
+    date:new Date(),
+    type:'',
+  }
+],
   
 }
 
