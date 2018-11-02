@@ -23,12 +23,9 @@ const initialState = {
   todos: ['Some Random', 'Task To', 'Get You', 'Started!'],
   done : [],
   tasks: [
-    {
-    task:"first Task",
-    date:new Date(),
-    type:'',
-  }
-],
+    {text:"first Task", date: new Date(), type: '',},
+    {text:"Second Task", date: new Date(), type: '',},
+  ],
   
 }
 
@@ -40,7 +37,7 @@ const initialState = {
 //   call reducer() with no state on startup, and we are expected to
 //   return the initial state of the app in this case.
 export const reducer = (state = initialState, action) => {
-  const {todos, done} = state
+  const {todos, done, tasks} = state
   const {type, payload} = action
 
   switch (type) {
@@ -48,6 +45,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         todos: [payload, ...todos],
+        tasks: [{text: payload, date:'',type:''}, ...tasks],
         
       
       }

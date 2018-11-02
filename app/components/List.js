@@ -10,8 +10,9 @@ export default class List extends Component {
       <TouchableOpacity
         style={styles.item}
         onPress={() => onPressItem(i, text)}
+        key={i}
       >
-        <Text style={{color: 'whitesmoke'}}>{text}</Text>
+        <Text style={{color: 'whitesmoke'}}>{JSON.stringify(text)}</Text>
       </TouchableOpacity>
     )
   }
@@ -20,7 +21,7 @@ export default class List extends Component {
     const {list} = this.props
 
     return (
-      <ScrollView style={{marginBottom:150}}>        
+      <ScrollView>        
         {list.map(this.renderItem)}        
       </ScrollView>
     )

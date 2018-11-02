@@ -3,13 +3,14 @@ import { createBottomTabNavigator, createStackNavigator } from 'react-navigation
 import { Icon } from 'react-native-elements';
 
 import todoList from './todoList';
+import taskList from './taskList'
 import details from './details';
 import doneList from './doneList';
 
 
 const todoStack = createStackNavigator(
   {
-  Home: todoList,
+  Home: taskList,
   Details: details,
   },
   {

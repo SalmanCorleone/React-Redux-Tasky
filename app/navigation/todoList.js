@@ -34,7 +34,6 @@ class todoList extends Component {
           placeholder={"Enter Quick Task"}
           onSubmitEditing={this.onAddTodo}
         />
-        {/* <List list={todos} onPressItem={this.onRemoveTodo} />         */}
         <List list={todos} onPressItem={(i,text)=>this.props.navigation.push('Details',
         {
           itemId: i,
