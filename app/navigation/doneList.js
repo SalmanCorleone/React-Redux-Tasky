@@ -20,13 +20,13 @@ class doneList extends Component {
     const { done } = this.props;
 
     return (
-      <View>
+      <View style={styles.back}>
         <Title/>
         <View style={styles.history}>
           <Text h4>Task History</Text>
         </View>
         
-        <ScrollView style={{marginBottom: 80}}>
+        <ScrollView>
           <Done list={done} onPressItem={this.onXdone} />
         </ScrollView>     
         
@@ -42,6 +42,10 @@ const styles=StyleSheet.create({
     justifyContent: 'center',
     alignItems:'center',
     padding: 20,
+  },
+  back: {
+    backgroundColor: '#2c3e50',
+    flex:1,  
   }
   
 })

@@ -1,24 +1,38 @@
 import React, { Component } from 'react'
-import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import {ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native'
+import {Icon} from 'react-native-elements'
 
-export default class List extends Component {
+export default class List extends Component { 
 
   renderItem = (text, i) => {
-    const {onPressItem} = this.props
+    const {onPressItem, onTick} = this.props
 
     return (
       <TouchableOpacity
-        style={styles.item}
-        onPress={() => onPressItem(i, text)}
-        key={i}
-      >
-        <Text style={{color: 'whitesmoke'}}>{JSON.stringify(text)}</Text>
+        style={styles.item}        
+        key={i}>
+        <TouchableOpacity 
+        style={{flex: 2, backgroundColor:'#2979FF', padding:15}}
+        onPress={()=>onTick(i,text)}>
+          <Icon
+          color='whitesmoke'
+          name='check'
+          type='evilicon'
+          />
+        </TouchableOpacity>
+        <TouchableOpacity 
+        style={{flex: 8,padding:15}} 
+        onPress={() => onPressItem(i, text)}>
+          <Text style={{color: 'whitesmoke'}}>{text.text}</Text>
+        </TouchableOpacity>
+        
       </TouchableOpacity>
     )
   }
 
   render() {
     const {list} = this.props
+    // list.sort((a,b)=>a.date-b.date);
 
     return (
       <ScrollView>        
@@ -30,9 +44,10 @@ export default class List extends Component {
 
 const styles = StyleSheet.create({
   item: {
+    alignItems:'center',
+    flexDirection: 'row',
     backgroundColor: '#34495e',
     marginBottom: 5,
-    padding: 15,
     
   },
 })

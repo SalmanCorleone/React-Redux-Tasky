@@ -2,7 +2,8 @@
 export const types = {
   ADD: 'ADD',
   REMOVE: 'REMOVE',
-  X_DONE: 'X_DONE'
+  X_DONE: 'X_DONE',
+  RESET: 'RESET'
 }
 
 // Helper functions to dispatch actions, optionally with payloads
@@ -15,17 +16,20 @@ export const actionCreators = {
   },
   x_done: (index)=>{
     return {type: types.X_DONE, payload:index}
+  },
+  reset:()=>{
+    return {type: types.RESET, payload:''}
   }
 }
 
 // Initial state of the store
-const initialState = {
-  todos: ['Some Random', 'Task To', 'Get You', 'Started!'],
+const initialState = {  
   done : [],
   tasks: [
     {text:"first Task", date: new Date(), type: '',},
     {text:"Second Task", date: new Date(), type: '',},
   ],
+  active:'true',
   
 }
 
@@ -37,14 +41,13 @@ const initialState = {
 //   call reducer() with no state on startup, and we are expected to
 //   return the initial state of the app in this case.
 export const reducer = (state = initialState, action) => {
-  const {todos, done, tasks} = state
+  const {done, tasks} = state
   const {type, payload} = action
 
   switch (type) {
     case types.ADD: {
       return {
         ...state,
-        todos: [payload, ...todos],
         tasks: [{text: payload, date:'',type:''}, ...tasks],
         
       
@@ -53,7 +56,7 @@ export const reducer = (state = initialState, action) => {
     case types.REMOVE: {
       return {
         ...state,
-        todos: todos.filter((todo,i) => i !== payload.index),
+        tasks: tasks.filter((task,i) => i !== payload.index),
         done: [payload.item, ...done],
       }
     }
@@ -65,6 +68,14 @@ export const reducer = (state = initialState, action) => {
         done: done.filter((done,i) => i!=payload),
       }
     }
+
+    case types.RESET:
+    {
+      return initialState
+    }
+
+
+    /*case ends*/
   }
 
   return state

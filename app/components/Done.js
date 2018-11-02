@@ -8,10 +8,11 @@ export default class Done extends Component {
 
     return (
       <TouchableOpacity
+        key={i}
         style={styles.item}
         onPress={()=>onPressItem(i)}        
       >
-        <Text>{text}</Text>
+        <Text style={{color:'whitesmoke'}}>{text.text}</Text>
       </TouchableOpacity>
     )
   }
@@ -20,7 +21,7 @@ export default class Done extends Component {
     const {list} = this.props
 
     return (
-      <View>
+      <View style={styles.doneBox}>
         {list.map(this.renderItem)}
       </View>
     )
@@ -29,8 +30,14 @@ export default class Done extends Component {
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'whitesmoke',
+    alignItems:'center',
+    flexDirection: 'row',
+    backgroundColor: '#34495e',
     marginBottom: 5,
-    padding: 15,
+    padding:15,    
   },
+  doneBox: {
+    paddingTop:10,
+    paddingBottom:10,
+  }
 })

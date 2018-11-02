@@ -2,16 +2,17 @@ import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import todoList from './todoList';
 import taskList from './taskList'
 import details from './details';
 import doneList from './doneList';
+import createTask from './createTask';
 
 
 const todoStack = createStackNavigator(
   {
   Home: taskList,
   Details: details,
+  Create: createTask,
   },
   {
   headerMode: 'none',

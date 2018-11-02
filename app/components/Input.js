@@ -37,8 +37,7 @@ export default class Input extends Component {
           />
         </View>
         <View style={styles.rightbox}>
-        <Button         
-            buttonStyle={styles.button}
+        <Button       
             backgroundColor="#2979FF"
             title="ADD"
             fontSize={10}
@@ -69,8 +68,5 @@ const styles = StyleSheet.create({
     flex: 3,
     
     justifyContent: 'center',
-  },
-  button:{
-       
-  }
+  },  
 })
