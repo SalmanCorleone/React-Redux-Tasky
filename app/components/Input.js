@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   leftbox:
   {
     flex: 7,
-
+    backgroundColor:'#34495e',
   },
   rightbox: 
   {

@@ -23,7 +23,7 @@ class doneList extends Component {
       <View style={styles.back}>
         <Title/>
         <View style={styles.history}>
-          <Text h4>Task History</Text>
+          <Text h4 style={{color:'whitesmoke'}}>Task History</Text>
         </View>
         
         <ScrollView>
@@ -37,8 +37,7 @@ class doneList extends Component {
 }
 
 const styles=StyleSheet.create({
-  history:{    
-    backgroundColor: 'whitesmoke',
+  history:{        
     justifyContent: 'center',
     alignItems:'center',
     padding: 20,

@@ -3,7 +3,8 @@ export const types = {
   ADD: 'ADD',
   REMOVE: 'REMOVE',
   X_DONE: 'X_DONE',
-  RESET: 'RESET'
+  RESET: 'RESET',
+  CREATE: 'CREATE',
 }
 
 // Helper functions to dispatch actions, optionally with payloads
@@ -19,7 +20,10 @@ export const actionCreators = {
   },
   reset:()=>{
     return {type: types.RESET, payload:''}
-  }
+  },
+  create:(task,date,type)=>{
+    return {type: types.CREATE, payload:{task,date,type}}
+  },
 }
 
 // Initial state of the store
@@ -53,6 +57,13 @@ export const reducer = (state = initialState, action) => {
       
       }
     }
+    case types.CREATE:
+    {
+      return {
+        ...state,
+        tasks: [{text:payload.task, date: payload.date, type: payload.type },...tasks],
+      }
+    }
     case types.REMOVE: {
       return {
         ...state,
@@ -69,12 +80,12 @@ export const reducer = (state = initialState, action) => {
       }
     }
 
+    
+    
     case types.RESET:
     {
       return initialState
     }
-
-
     /*case ends*/
   }
 

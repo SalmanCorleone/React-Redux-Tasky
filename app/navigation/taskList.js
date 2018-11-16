@@ -9,7 +9,6 @@ import {Button, Text, Icon, Fab} from 'native-base'
 import { actionCreators } from "../reducers/todoListRedux";
 
 const mapStateToProps = state => ({
-    todos: state.todos,
     done : state.done,
     tasks : state.tasks,
     
@@ -38,10 +37,6 @@ class taskList extends Component {
       <View style={styles.back}>
         <Title></Title>
         <Button onPress={this.onReset}><Text>Reset</Text></Button>
-        
-        
-          
-
 
         <Input
           placeholder={"Enter Quick Task"}
