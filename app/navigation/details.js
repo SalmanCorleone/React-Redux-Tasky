@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Title from '../components/Title'
+import React, { Component } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import Title from "../components/Title";
 
 export default class details extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
-
-  
 
   render() {
     const { navigation } = this.props;
-    const itemId = navigation.getParam('itemId', 'NO-ID');
-    const item = navigation.getParam('item', 'Not Assigned');
+    const itemId = navigation.getParam("itemId", "NO-ID");
+    const item = navigation.getParam("item", "Not Assigned");
     return (
       <View style={styles.back}>
-        <Title></Title>
+        <Title />
         <Text> ID: {itemId} </Text>
         <Text> Task: {item.text} </Text>
         <Text> Date: {item.date} </Text>
@@ -27,11 +24,9 @@ export default class details extends Component {
   }
 }
 
-
-const styles= StyleSheet.create({
+const styles = StyleSheet.create({
   back: {
-    backgroundColor: '#2c3e50',
-    flex: 1,
+    backgroundColor: "#2c3e50",
+    flex: 1
   }
 });
-
