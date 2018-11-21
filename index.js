@@ -1,13 +1,13 @@
 import React from "react";
-import { AppRegistry} from "react-native";
-import { createStore  } from "redux";
+import { AppRegistry } from "react-native";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { persistStore, persistReducer } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import storage from 'redux-persist/lib/storage';
+import storage from "redux-persist/lib/storage";
 
-import {AppWithNavigation} from "./app/navigation/router";
+import { AppWithNavigation } from "./app/navigation/router";
 import { reducer } from "./app/reducers/todoListRedux";
 
 const persistConfig = {
