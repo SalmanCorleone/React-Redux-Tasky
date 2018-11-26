@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { FormInput, Button, Icon } from 'react-native-elements';
+import { FormInput, Button, Icon, Text } from 'react-native-elements';
 import { DatePicker, Picker, Row } from 'native-base';
 import { actionCreators } from '../reducers/todoListRedux';
 
@@ -43,6 +43,12 @@ class createTask extends Component {
 			<View style={styles.back}>
 				<Title />
 
+				<View style={styles.title}>
+					<Text h4 style={{ color: 'whitesmoke' }}>
+						Create New Task
+					</Text>
+				</View>
+
 				<View style={{ paddingTop: 50 }}>
 					<View style={styles.item}>
 						<View style={styles.lefticon}>
@@ -63,7 +69,7 @@ class createTask extends Component {
 
 					<View style={styles.item}>
 						<View style={styles.lefticon}>
-							<Icon name="archive" color="whitesmoke" />
+							<Icon name="date-range" color="whitesmoke" />
 						</View>
 
 						<View style={styles.rightpart}>
@@ -86,7 +92,7 @@ class createTask extends Component {
 
 					<View style={styles.item}>
 						<View style={styles.lefticon}>
-							<Icon name="archive" color="whitesmoke" />
+							<Icon name="poll" color="whitesmoke" />
 						</View>
 
 						<View style={styles.rightpart}>
@@ -118,6 +124,12 @@ const styles = StyleSheet.create({
 	back: {
 		flex: 1,
 		backgroundColor: '#2c3e50'
+	},
+
+	title: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		padding: 20
 	},
 
 	item: {
