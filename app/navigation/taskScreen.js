@@ -39,12 +39,12 @@ class taskScreen extends Component {
 		return (
 			<KeyboardAvoidingView style={styles.back}>
 				<Title />
-				<Button onPress={this.onReset}>
-					<Text>Reset</Text>
-				</Button>
 
 				<Input placeholder={'Enter Quick Task'} onSubmitEditing={this.onAddTodo} />
 				<List list={tasks} />
+				<Button onPress={this.onReset}>
+					<Text>Reset</Text>
+				</Button>
 			</KeyboardAvoidingView>
 		);
 	}
