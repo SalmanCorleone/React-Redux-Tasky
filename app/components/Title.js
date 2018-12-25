@@ -19,7 +19,7 @@ export default class Title extends Component {
 						backgroundColor: '#2979FF',
 						borderBottomWidth: 0
 					}}
-					leftComponent={{ icon: 'menu', color: '#fff' }}
+					leftComponent={{}}
 					centerComponent={{ text: 'Taskify', style: { color: '#fff' } }}
 				/>
 			</View>

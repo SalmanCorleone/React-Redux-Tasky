@@ -2,16 +2,15 @@ import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import taskList from './taskList';
+import taskScreen from './taskScreen';
 import details from './details';
 import doneList from './doneList';
 import createTask from './createTask';
 
 const todoStack = createStackNavigator(
 	{
-		Home: taskList,
-		Details: details,
-		Create: createTask
+		Home: taskScreen,
+		Details: details
 	},
 	{
 		headerMode: 'none',
@@ -28,6 +27,14 @@ export const AppWithNavigation = createBottomTabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="list" type="feather" size={25} color={tintColor} />
 			}
 		},
+
+		createTask: {
+			screen: createTask,
+			navigationOptions: {
+				tabBarLabel: 'New',
+				tabBarIcon: ({ tintColor }) => <Icon name="add" size={25} color={tintColor} />
+			}
+		},
 		doneList: {
 			screen: doneList,
 			navigationOptions: {
@@ -38,7 +45,6 @@ export const AppWithNavigation = createBottomTabNavigator(
 	},
 	{
 		tabBarOptions: {
-			animationEnabled: true,
 			activeTintColor: '#fff',
 			inactiveTintColor: '#CFD8DC',
 			style: {

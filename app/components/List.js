@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
-import { ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { ScrollView, ToastAndroid } from 'react-native';
+import { connect } from 'react-redux';
+import Item from './Item';
+import { actionCreators } from '../reducers/todoListRedux';
 
-export default class List extends Component {
-	renderItem = (text, i) => {
-		const { onPressItem, onTick } = this.props;
+const mapStateToProps = (state) => ({});
 
-		return (
-			<TouchableOpacity style={styles.item} key={i}>
-				<TouchableOpacity
-					style={{ flex: 2, backgroundColor: '#2979FF', padding: 15 }}
-					onPress={() => onTick(i, text)}
-				>
-					<Icon color="whitesmoke" name="check" type="evilicon" />
-				</TouchableOpacity>
-				<TouchableOpacity style={{ flex: 8, padding: 15 }} onPress={() => onPressItem(i, text)}>
-					<Text style={{ color: 'whitesmoke' }}>{text.text}</Text>
-				</TouchableOpacity>
-			</TouchableOpacity>
-		);
+class List extends Component {
+	renderItem = (item, i) => {
+		return <Item key={i} item={item} id={i} onTick={this.onTick} />;
+	};
+	onDelete = () => {};
+	onTick = (i, item) => {
+		const { dispatch } = this.props;
+		dispatch(actionCreators.remove(i, item));
+		ToastAndroid.show('A pikachu appeared nearby !', ToastAndroid.SHORT);
 	};
 
 	render() {
@@ -29,11 +25,4 @@ export default class List extends Component {
 	}
 }
 
-const styles = StyleSheet.create({
-	item: {
-		alignItems: 'center',
-		flexDirection: 'row',
-		backgroundColor: '#34495e',
-		marginBottom: 5
-	}
-});
+export default connect(mapStateToProps)(List);

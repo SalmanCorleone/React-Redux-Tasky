@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, KeyboardAvoidingView, Animated, PanResponder, Dimensions } from 'react-native';
 import Title from '../components/Title';
 import Input from '../components/Input';
 import List from '../components/List';
@@ -8,12 +8,18 @@ import { Button, Text, Icon, Fab } from 'native-base';
 
 import { actionCreators } from '../reducers/todoListRedux';
 
+const { width, height } = Dimensions.get('window');
+
 const mapStateToProps = (state) => ({
 	done: state.done,
 	tasks: state.tasks
 });
 
-class taskList extends Component {
+class taskScreen extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	onAddTodo = (text) => {
 		const { dispatch } = this.props;
 		dispatch(actionCreators.add(text));
@@ -38,27 +44,7 @@ class taskList extends Component {
 				</Button>
 
 				<Input placeholder={'Enter Quick Task'} onSubmitEditing={this.onAddTodo} />
-				<List
-					list={tasks}
-					onTick={this.onTick}
-					onPressItem={(i, text) =>
-						this.props.navigation.push('Details', {
-							itemId: i,
-							item: text
-						})}
-				/>
-				<View>
-					<Fab
-						active="true"
-						direction="up"
-						containerStyle={{}}
-						style={{ backgroundColor: '#5067FF' }}
-						position="bottomRight"
-						onPress={() => this.props.navigation.navigate('Create')}
-					>
-						<Icon name="add" />
-					</Fab>
-				</View>
+				<List list={tasks} />
 			</KeyboardAvoidingView>
 		);
 	}
@@ -71,4 +57,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default connect(mapStateToProps)(taskList);
+export default connect(mapStateToProps)(taskScreen);
