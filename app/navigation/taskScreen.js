@@ -37,15 +37,15 @@ class taskScreen extends Component {
 		const { tasks } = this.props;
 
 		return (
-			<KeyboardAvoidingView style={styles.back}>
+			<View style={styles.back}>
 				<Title />
 
-				<Input placeholder={'Enter Quick Task'} onSubmitEditing={this.onAddTodo} />
-				<List list={tasks} />
+				<List list={tasks} day={'Today'} />
 				<Button onPress={this.onReset}>
 					<Text>Reset</Text>
 				</Button>
-			</KeyboardAvoidingView>
+				<Input placeholder={'Enter Quick Task'} onSubmitEditing={this.onAddTodo} />
+			</View>
 		);
 	}
 }

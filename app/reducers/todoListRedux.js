@@ -36,6 +36,8 @@ const initialState = {
 		{ text: 'Is Task', date: new Date(), type: '' },
 		{ text: 'Jack Task', date: new Date(), type: '' },
 		{ text: 'Septic Task', date: new Date(), type: '' },
+		{ text: 'Second Task', date: new Date(), type: '' },
+		{ text: 'Second Task', date: new Date(), type: '' },
 		{ text: 'Second Task', date: new Date(), type: '' }
 	],
 	active: 'true'

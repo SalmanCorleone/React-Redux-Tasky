@@ -24,7 +24,7 @@ export const AppWithNavigation = createBottomTabNavigator(
 			screen: todoStack,
 			navigationOptions: {
 				tabBarLabel: 'Tasks',
-				tabBarIcon: ({ tintColor }) => <Icon name="list" type="feather" size={25} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="ios-list" type="ionicon" size={25} color={tintColor} />
 			}
 		},
 

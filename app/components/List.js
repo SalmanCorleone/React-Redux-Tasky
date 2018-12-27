@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, ToastAndroid } from 'react-native';
+import { ScrollView, ToastAndroid, View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Item from './Item';
 import { actionCreators } from '../reducers/todoListRedux';
@@ -14,14 +14,21 @@ class List extends Component {
 	onTick = (i, item) => {
 		const { dispatch } = this.props;
 		dispatch(actionCreators.remove(i, item));
-		ToastAndroid.show('A pikachu appeared nearby !', ToastAndroid.SHORT);
+		ToastAndroid.show('Task Completed!', ToastAndroid.SHORT);
 	};
 
 	render() {
-		const { list } = this.props;
+		const { list, day } = this.props;
 		// list.sort((a,b)=>a.date-b.date);
 
-		return <ScrollView>{list.map(this.renderItem)}</ScrollView>;
+		return (
+			<ScrollView>
+				<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
+					<Text style={{ color: '#42A5F5' }}>{day}</Text>
+				</View>
+				<View>{list.map(this.renderItem)}</View>
+			</ScrollView>
+		);
 	}
 }
 

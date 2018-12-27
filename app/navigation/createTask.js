@@ -59,7 +59,7 @@ class createTask extends Component {
 							<FormInput
 								style={{ padding: 0 }}
 								value={task}
-								autoFocus={true}
+								// autoFocus={true}
 								placeholderTextColor="whitesmoke"
 								inputStyle={{ color: 'whitesmoke' }}
 								onChangeText={this.onChangeTask}

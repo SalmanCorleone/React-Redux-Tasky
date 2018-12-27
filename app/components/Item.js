@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Animated, PanResponder, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, Animated, PanResponder, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 const { width, height } = Dimensions.get('window');
@@ -62,35 +62,100 @@ class Item extends Component {
 	render() {
 		const { item } = this.props;
 		return (
-			<Animated.View
-				{...this.PanResponder.panHandlers}
-				style={[
-					{
-						transform: this.position.getTranslateTransform()
-					},
-					styles.item
-				]}
-			>
+			<View>
+				<View
+					style={{
+						flex: 1,
+						position: 'absolute',
+						backgroundColor: '#263238',
+						height: '80%',
+						width: '90%',
+						top: 5,
+						left: 15
+					}}
+				/>
 				<Animated.View
+					{...this.PanResponder.panHandlers}
 					style={[
-						{ flex: 1, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center' },
-						{ opacity: this.leftOpacity }
+						{
+							transform: this.position.getTranslateTransform()
+						},
+						styles.item
 					]}
 				>
-					<Icon name="closecircleo" size={25} color="whitesmoke" />
+					{/*
+				 Left Done Button 				
+				*/}
+					<View style={{ flex: 1 }}>
+						<View
+							style={{
+								flex: 1,
+								justifyContent: 'center',
+								alignItems: 'center'
+							}}
+						>
+							<Icon name="checkcircleo" size={20} color="whitesmoke" />
+						</View>
+						<Animated.View
+							style={[
+								{
+									flex: 1,
+									backgroundColor: 'green',
+									justifyContent: 'center',
+									alignItems: 'center',
+									position: 'absolute',
+									width: '100%',
+									height: '100%'
+								},
+								{ opacity: this.leftOpacity }
+							]}
+						>
+							<Icon name="checkcircleo" size={20} color="whitesmoke" />
+						</Animated.View>
+					</View>
+
+					{/* 
+				Task Name
+				*/}
+
+					<TouchableHighlight style={{ flex: 3, padding: 15, justifyContent: 'center' }}>
+						<Text style={styles.text}>{item.text}</Text>
+					</TouchableHighlight>
+
+					{/* 
+				Right Button 
+				*/}
+					<View style={{ flex: 1 }}>
+						<View
+							style={{
+								flex: 1,
+								justifyContent: 'center',
+								alignItems: 'center',
+								borderWidth: 1,
+								borderColor: '486683'
+							}}
+						>
+							<Icon name="delete" size={20} color="whitesmoke" />
+						</View>
+						<Animated.View
+							style={[
+								{
+									flex: 1,
+									backgroundColor: 'red',
+									justifyContent: 'center',
+									alignItems: 'center',
+									position: 'absolute',
+									width: '100%',
+									height: '100%'
+								},
+								{ opacity: this.rightOpacity }
+							]}
+						>
+							<Icon name="delete" size={20} color="whitesmoke" />
+						</Animated.View>
+					</View>
 				</Animated.View>
-				<View style={{ flex: 3, padding: 15, justifyContent: 'center' }}>
-					<Text style={styles.text}>{item.text}</Text>
-				</View>
-				<Animated.View
-					style={[
-						{ flex: 1, backgroundColor: 'green', justifyContent: 'center', alignItems: 'center' },
-						{ opacity: this.rightOpacity }
-					]}
-				>
-					<Icon name="checkcircleo" size={25} color="whitesmoke" />
-				</Animated.View>
-			</Animated.View>
+			</View>
 		);
 	}
 }
