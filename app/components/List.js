@@ -22,20 +22,40 @@ class List extends Component {
 		const { tasks } = this.props;
 		var todayList = tasks.filter((task) => new Date(task.date).toDateString() == new Date().toDateString());
 		var otherList = tasks.filter((task) => new Date(task.date).toDateString() != new Date().toDateString());
+
+		let todayPartTitle, otherPartTitle;
 		// list.sort((a,b)=>a.date-b.date);
+
+		if (todayList.length != 0) {
+			todayPartTitle = (
+				<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
+					<Text style={{ color: Theme.Border }}>Today</Text>
+				</View>
+			);
+		}
+		if (otherList.length != 0) {
+			otherPartTitle = (
+				<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
+					<Text style={{ color: Theme.Border }}>Others</Text>
+				</View>
+			);
+		}
 
 		if (tasks === undefined || tasks.length == 0) {
 			return null;
 		} else {
 			return (
 				<ScrollView>
-					<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
-						<Text style={{ color: Theme.Border }}>Today</Text>
-					</View>
+					{/* today */}
+
+					{todayPartTitle}
+
 					<View>{todayList.map(this.renderItem)}</View>
-					<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
-						<Text style={{ color: Theme.Border }}>Others</Text>
-					</View>
+
+					{/* others */}
+
+					{otherPartTitle}
+
 					<View>{otherList.map(this.renderItem)}</View>
 				</ScrollView>
 			);
