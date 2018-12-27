@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Animated, PanResponder, StyleSheet, TouchableHighlight, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import Theme from '../style/Theme';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 class Item extends Component {
 	constructor(props) {
@@ -70,7 +71,7 @@ class Item extends Component {
 						backgroundColor: '#263238',
 						height: '80%',
 						width: '90%',
-						top: 5,
+						top: 7,
 						left: 15
 					}}
 				/>
@@ -94,7 +95,7 @@ class Item extends Component {
 								alignItems: 'center'
 							}}
 						>
-							<Icon name="checkcircleo" size={20} color="whitesmoke" />
+							<Icon name="checkcircleo" size={20} color={Theme.Border} />
 						</View>
 						<Animated.View
 							style={[
@@ -118,8 +119,17 @@ class Item extends Component {
 				Task Name
 				*/}
 
-					<TouchableHighlight style={{ flex: 3, padding: 15, justifyContent: 'center' }}>
-						<Text style={styles.text}>{item.text}</Text>
+					<TouchableHighlight
+						style={{
+							flex: 3,
+							padding: 15,
+							justifyContent: 'center',
+							backgroundColor: Theme.Highlight
+						}}
+					>
+						<Text style={styles.text}>
+							{item.text}- {new Date(item.date).toDateString()}
+						</Text>
 					</TouchableHighlight>
 
 					{/* 
@@ -130,12 +140,10 @@ class Item extends Component {
 							style={{
 								flex: 1,
 								justifyContent: 'center',
-								alignItems: 'center',
-								borderWidth: 1,
-								borderColor: '486683'
+								alignItems: 'center'
 							}}
 						>
-							<Icon name="delete" size={20} color="whitesmoke" />
+							<Icon name="delete" size={20} color={Theme.Border} />
 						</View>
 						<Animated.View
 							style={[
@@ -167,9 +175,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		backgroundColor: '#34495e',
 		marginVertical: 5,
-		marginHorizontal: 10,
-		left: 0,
-		top: 0
+		marginHorizontal: 10
 	},
 	text: {
 		fontSize: 15,

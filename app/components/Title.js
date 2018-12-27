@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, StatusBar, Picker } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { Header } from 'react-native-elements';
+import Theme from '../style/Theme';
 
 export default class Title extends Component {
 	state = {
@@ -12,11 +13,11 @@ export default class Title extends Component {
 
 		return (
 			<View>
-				<StatusBar backgroundColor="#2979FF" barStyle="light-content" />
+				<StatusBar backgroundColor={Theme.Primary_Color} barStyle="light-content" />
 
 				<Header
 					outerContainerStyles={{
-						backgroundColor: '#2979FF',
+						backgroundColor: Theme.Primary_Color,
 						borderBottomWidth: 0
 					}}
 					leftComponent={{}}

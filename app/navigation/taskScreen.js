@@ -1,19 +1,35 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, KeyboardAvoidingView, Animated, PanResponder, Dimensions } from 'react-native';
-import Title from '../components/Title';
+import { View, StyleSheet, Button, Text, StatusBar } from 'react-native';
 import Input from '../components/Input';
 import List from '../components/List';
 import { connect } from 'react-redux';
-import { Button, Text, Icon, Fab } from 'native-base';
+import Theme from '../style/Theme';
 
 import { actionCreators } from '../reducers/todoListRedux';
-
-const { width, height } = Dimensions.get('window');
 
 const mapStateToProps = (state) => ({
 	done: state.done,
 	tasks: state.tasks
 });
+
+var groupData = (data) => {
+	let result = [];
+
+	for (var d in data) {
+		// get date from data
+		var date = d.date;
+
+		// add into new array and use key as the date
+		if (!result[date]) {
+			result[date] = [ d ];
+		} else {
+			// if key already existed, extend into group
+			result[date].push(d);
+		}
+	}
+
+	return result;
+};
 
 class taskScreen extends Component {
 	constructor(props) {
@@ -24,10 +40,7 @@ class taskScreen extends Component {
 		const { dispatch } = this.props;
 		dispatch(actionCreators.add(text));
 	};
-	onTick = (index, item) => {
-		const { dispatch } = this.props;
-		dispatch(actionCreators.remove(index, item));
-	};
+
 	onReset = () => {
 		const { dispatch } = this.props;
 		dispatch(actionCreators.reset());
@@ -38,12 +51,10 @@ class taskScreen extends Component {
 
 		return (
 			<View style={styles.back}>
-				<Title />
-
-				<List list={tasks} day={'Today'} />
-				<Button onPress={this.onReset}>
-					<Text>Reset</Text>
-				</Button>
+				<StatusBar backgroundColor={Theme.Primary_Color} barStyle="light-content" />
+				<Text style={{ margin: 20, color: 'whitesmoke' }}>[Debug Console]</Text>
+				<List tasks={tasks} />
+				<Button onPress={this.onReset} title="reset" />
 				<Input placeholder={'Enter Quick Task'} onSubmitEditing={this.onAddTodo} />
 			</View>
 		);
