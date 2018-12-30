@@ -1,20 +1,33 @@
 import React, { Component } from 'react';
-import { ScrollView, ToastAndroid, View, Text } from 'react-native';
+import { ScrollView, ToastAndroid, View, Text, LayoutAnimation, UIManager } from 'react-native';
 import { connect } from 'react-redux';
 import Item from './Item';
 import { actionCreators } from '../reducers/todoListRedux';
 import Theme from '../style/Theme';
 
-const mapStateToProps = (state) => ({});
-
 class List extends Component {
-	renderItem = (item, i) => {
-		return <Item key={i} item={item} id={i} onTick={this.onTick} />;
+	state = {
+		closedIndices: []
 	};
-	onDelete = () => {};
-	onTick = (i, item) => {
+	constructor(props) {
+		super(props);
+		UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+	}
+
+	renderItem = (item, i) => {
+		return <Item key={item.id} item={item} id={i} onDone={this.onDone} onRemove={this.onRemove} />;
+	};
+
+	onRemove = (item) => {
 		const { dispatch } = this.props;
-		dispatch(actionCreators.remove(i, item));
+		dispatch(actionCreators.remove(item));
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+		ToastAndroid.show('Task Deleted!', ToastAndroid.SHORT);
+	};
+	onDone = (item) => {
+		const { dispatch } = this.props;
+		dispatch(actionCreators.done(item));
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
 		ToastAndroid.show('Task Completed!', ToastAndroid.SHORT);
 	};
 
@@ -63,4 +76,4 @@ class List extends Component {
 	}
 }
 
-export default connect(mapStateToProps)(List);
+export default connect()(List);

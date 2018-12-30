@@ -22,7 +22,7 @@ class Item extends Component {
 	}
 
 	componentWillMount() {
-		const { onTick, item, id } = this.props;
+		const { onRemove, onDone, item, id } = this.props;
 
 		this.PanResponder = PanResponder.create({
 			onStartShouldSetPanResponder: (evnt, gestureState) => true,
@@ -38,17 +38,17 @@ class Item extends Component {
 			onPanResponderRelease: (evnt, gestureState) => {
 				if (gestureState.dx > 49) {
 					Animated.spring(this.position, {
-						toValue: { x: width + 100, y: 0 }
+						toValue: { x: width, y: 0 }
 					}).start(() => {
 						this.position.setValue({ x: 0, y: 0 });
-						onTick(id, item);
+						onDone(item);
 					});
 				} else if (gestureState.dx < -49) {
 					Animated.spring(this.position, {
-						toValue: { x: -width - 100, y: 0 }
+						toValue: { x: -width, y: 0 }
 					}).start(() => {
 						this.position.setValue({ x: 0, y: 0 });
-						onTick(id, item);
+						onRemove(item);
 					});
 				} else {
 					Animated.spring(this.position, {
@@ -61,7 +61,7 @@ class Item extends Component {
 	}
 
 	render() {
-		const { item } = this.props;
+		const { item, id } = this.props;
 		return (
 			<View>
 				<View
@@ -128,7 +128,7 @@ class Item extends Component {
 						}}
 					>
 						<Text style={styles.text}>
-							{item.text}- {new Date(item.date).toDateString()}
+							{item.text}- {new Date(item.date).toDateString()}-{id}
 						</Text>
 					</TouchableHighlight>
 
