@@ -1,6 +1,6 @@
 // The types of actions that you can dispatch to modify the state of the store
 export const types = {
-	ADD: 'ADD',
+	QUICK_ADD: 'QUICK_ADD',
 	DONE: 'DONE',
 	REMOVE: 'REMOVE',
 	X_DONE: 'X_DONE',
@@ -10,8 +10,8 @@ export const types = {
 
 // Helper functions to dispatch actions, optionally with payloads
 export const actionCreators = {
-	add: (item) => {
-		return { type: types.ADD, payload: item };
+	quickAdd: (item) => {
+		return { type: types.QUICK_ADD, payload: item };
 	},
 	done: (item) => {
 		return { type: types.DONE, payload: item };
@@ -53,10 +53,11 @@ export const reducer = (state = initialState, action) => {
 	const { type, payload } = action;
 
 	switch (type) {
-		case types.ADD: {
+		case types.QUICK_ADD: {
 			return {
 				...state,
-				tasks: [ { text: payload, date: '', type: '' }, ...tasks ]
+				taskID: taskID + 1,
+				tasks: [ ...tasks, { id: taskID, text: payload, date: new Date(), type: '' } ]
 			};
 		}
 

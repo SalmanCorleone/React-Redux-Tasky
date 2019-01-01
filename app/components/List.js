@@ -6,9 +6,6 @@ import { actionCreators } from '../reducers/todoListRedux';
 import Theme from '../style/Theme';
 
 class List extends Component {
-	state = {
-		closedIndices: []
-	};
 	constructor(props) {
 		super(props);
 		UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);

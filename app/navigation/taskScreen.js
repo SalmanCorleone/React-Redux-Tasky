@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Button, Text, StatusBar } from 'react-native';
+import { View, StyleSheet, Button, Text, StatusBar, LayoutAnimation, UIManager } from 'react-native';
 import Input from '../components/Input';
 import List from '../components/List';
 import { connect } from 'react-redux';
@@ -34,11 +34,13 @@ var groupData = (data) => {
 class taskScreen extends Component {
 	constructor(props) {
 		super(props);
+		UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 	}
 
 	onAddTodo = (text) => {
 		const { dispatch } = this.props;
-		dispatch(actionCreators.add(text));
+		dispatch(actionCreators.quickAdd(text));
+		LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
 	};
 
 	onReset = () => {

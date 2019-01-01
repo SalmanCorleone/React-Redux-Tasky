@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import Theme from '../style/Theme';
 
 import taskScreen from './taskScreen';
 import details from './details';
@@ -46,9 +47,9 @@ export const AppWithNavigation = createBottomTabNavigator(
 	{
 		tabBarOptions: {
 			activeTintColor: '#fff',
-			inactiveTintColor: '#CFD8DC',
+			inactiveTintColor: Theme.Tint,
 			style: {
-				backgroundColor: '#2979FF'
+				backgroundColor: Theme.Secondary_Color
 			}
 		}
 	}

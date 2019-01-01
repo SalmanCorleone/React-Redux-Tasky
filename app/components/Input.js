@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { FormInput, Button } from 'react-native-elements';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { FormInput } from 'react-native-elements';
+import Theme from '../style/Theme';
 
 export default class Input extends Component {
 	state = {
@@ -35,9 +36,9 @@ export default class Input extends Component {
 						onSubmitEditing={this.onSubmitEditing}
 					/>
 				</View>
-				<View style={styles.rightbox}>
-					<Button backgroundColor="#2979FF" title="ADD" fontSize={10} onPress={this.onSubmitEditing} />
-				</View>
+				<TouchableOpacity style={styles.rightbox} onPress={this.onSubmitEditing}>
+					<Text style={{ color: 'whitesmoke' }}>Add</Text>
+				</TouchableOpacity>
 			</View>
 		);
 	}
@@ -55,6 +56,8 @@ const styles = StyleSheet.create({
 	},
 	rightbox: {
 		flex: 3,
-		justifyContent: 'center'
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: Theme.Secondary_Color
 	}
 });

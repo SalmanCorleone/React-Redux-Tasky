@@ -128,7 +128,7 @@ class Item extends Component {
 						}}
 					>
 						<Text style={styles.text}>
-							{item.text}- {new Date(item.date).toDateString()}-{id}
+							{item.text}- {new Date(item.date).toDateString()}-{item.id}
 						</Text>
 					</TouchableHighlight>
 
