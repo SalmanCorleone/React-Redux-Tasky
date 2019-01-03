@@ -12,25 +12,6 @@ const mapStateToProps = (state) => ({
 	tasks: state.tasks
 });
 
-var groupData = (data) => {
-	let result = [];
-
-	for (var d in data) {
-		// get date from data
-		var date = d.date;
-
-		// add into new array and use key as the date
-		if (!result[date]) {
-			result[date] = [ d ];
-		} else {
-			// if key already existed, extend into group
-			result[date].push(d);
-		}
-	}
-
-	return result;
-};
-
 class taskScreen extends Component {
 	constructor(props) {
 		super(props);
@@ -55,9 +36,9 @@ class taskScreen extends Component {
 			<View style={styles.back}>
 				<StatusBar backgroundColor={Theme.Primary_Color} barStyle="light-content" />
 				<Text style={{ margin: 20, color: 'whitesmoke' }}>[Debug Console]</Text>
-				<List tasks={tasks} />
-				<Button onPress={this.onReset} title="reset" />
 				<Input placeholder={'Enter Quick Task'} onSubmitEditing={this.onAddTodo} />
+				<List tasks={tasks} />
+				{/* <Button onPress={this.onReset} title="reset" /> */}
 			</View>
 		);
 	}

@@ -46,13 +46,15 @@ export default class Input extends Component {
 
 const styles = StyleSheet.create({
 	main: {
-		marginHorizontal: 10,
-		marginVertical: 10,
+		paddingHorizontal: 10,
+		paddingVertical: 10,
 		flexDirection: 'row'
+		// borderTopWidth: 1,
+		// borderColor: Theme.Border
 	},
 	leftbox: {
 		flex: 7,
-		backgroundColor: '#34495e'
+		backgroundColor: Theme.Highlight
 	},
 	rightbox: {
 		flex: 3,

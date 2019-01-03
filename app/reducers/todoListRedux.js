@@ -57,7 +57,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				taskID: taskID + 1,
-				tasks: [ ...tasks, { id: taskID, text: payload, date: new Date(), type: '' } ]
+				tasks: [ { id: taskID, text: payload, date: new Date(), type: '' }, ...tasks ]
 			};
 		}
 
@@ -91,7 +91,7 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				taskID: taskID + 1,
-				tasks: [ ...tasks, { id: taskID, text: payload.task, date: payload.date, type: payload.type } ]
+				tasks: [ { id: taskID, text: payload.task, date: payload.date, type: payload.type }, ...tasks ]
 			};
 		}
 		/*case ends*/

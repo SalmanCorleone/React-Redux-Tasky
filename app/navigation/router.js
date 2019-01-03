@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Theme from '../style/Theme';
 
@@ -19,7 +19,7 @@ const todoStack = createStackNavigator(
 	}
 );
 
-export const AppWithNavigation = createBottomTabNavigator(
+const bottomNav = createBottomTabNavigator(
 	{
 		todoList: {
 			screen: todoStack,
@@ -54,3 +54,5 @@ export const AppWithNavigation = createBottomTabNavigator(
 		}
 	}
 );
+
+export const AppWithNavigation = createAppContainer(bottomNav);

@@ -5,11 +5,35 @@ import Item from './Item';
 import { actionCreators } from '../reducers/todoListRedux';
 import Theme from '../style/Theme';
 
+var groupData = (items) => {
+	let result = {};
+
+	items.map((item) => {
+		let date = new Date(item.date).toDateString();
+		if (!result[date]) {
+			result[date] = [];
+		}
+		result[date].push(item);
+	});
+
+	return result;
+};
 class List extends Component {
 	constructor(props) {
 		super(props);
 		UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 	}
+
+	hey = (group, i) => {
+		return (
+			<View key={i}>
+				<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
+					<Text style={{ color: Theme.Border }}>{group[0]}</Text>
+				</View>
+				{group[1].map(this.renderItem)}
+			</View>
+		);
+	};
 
 	renderItem = (item, i) => {
 		return <Item key={item.id} item={item} id={i} onDone={this.onDone} onRemove={this.onRemove} />;
@@ -30,43 +54,17 @@ class List extends Component {
 
 	render() {
 		const { tasks } = this.props;
-		var todayList = tasks.filter((task) => new Date(task.date).toDateString() == new Date().toDateString());
-		var otherList = tasks.filter((task) => new Date(task.date).toDateString() != new Date().toDateString());
+		var groupedByDate = groupData(tasks);
 
-		let todayPartTitle, otherPartTitle;
-		// list.sort((a,b)=>a.date-b.date);
-
-		if (todayList.length != 0) {
-			todayPartTitle = (
-				<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
-					<Text style={{ color: Theme.Border }}>Today</Text>
-				</View>
-			);
-		}
-		if (otherList.length != 0) {
-			otherPartTitle = (
-				<View style={{ flex: 1, marginHorizontal: 10, marginTop: 20, marginBottom: 5 }}>
-					<Text style={{ color: Theme.Border }}>Others</Text>
-				</View>
-			);
-		}
+		/********RENDER*********/
 
 		if (tasks === undefined || tasks.length == 0) {
 			return null;
 		} else {
 			return (
 				<ScrollView>
-					{/* today */}
-
-					{todayPartTitle}
-
-					<View>{todayList.map(this.renderItem)}</View>
-
-					{/* others */}
-
-					{otherPartTitle}
-
-					<View>{otherList.map(this.renderItem)}</View>
+					{/* <Text style={{ color: 'whitesmoke' }}>{JSON.stringify(groupedByDate)}</Text> */}
+					{Object.entries(groupedByDate).map(this.hey)}
 				</ScrollView>
 			);
 		}
