@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { FormInput, Button, Icon, Text } from 'react-native-elements';
-import { DatePicker, Picker, Row } from 'native-base';
 import { actionCreators } from '../reducers/todoListRedux';
 
 import { connect } from 'react-redux';

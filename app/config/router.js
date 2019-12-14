@@ -3,10 +3,10 @@ import { createBottomTabNavigator, createStackNavigator, createAppContainer } fr
 import { Icon } from 'react-native-elements';
 import Theme from '../style/Theme';
 
-import taskScreen from './taskScreen';
-import details from './details';
-import doneList from './doneList';
-import createTask from './createTask';
+import taskScreen from '../navigation/taskScreen';
+import details from '../navigation/details';
+import doneList from '../navigation/doneList';
+import createTask from '../navigation/createTask';
 
 const todoStack = createStackNavigator(
 	{
